@@ -1,5 +1,5 @@
 import {animate, Component, state, style, transition, trigger} from '@angular/core';
-import {User} from "../../../model/user";
+import {UserModel} from "../../../model/user";
 import {UserService} from "../../../service/userService";
 
 @Component({
@@ -9,7 +9,7 @@ import {UserService} from "../../../service/userService";
 
 })
 export class RegisterComponent {
-  protected user: User = new User();
+  protected user: UserModel = new UserModel();
   protected confirmPassword: string;
   constructor (private userService: UserService) {}
   controller() {}
@@ -21,7 +21,7 @@ export class RegisterComponent {
   checkConfirmPassword(){}
   register(data: any) {
     this.userService.register(this.user).subscribe(data => {
-      console.log(data);
+      //console.log(data);
     })
   }
 }

@@ -34,6 +34,8 @@ import {CloudinaryComponent} from "./CloudinaryImageComponent/CloudinaryComponen
 import {ProjectPageComponent} from "./createProject/projectPage.component";
 import {CalendarComponent} from "./createProject/calendar/calendar.component";
 import {DatePickerModule} from "ng2-datepicker";
+import {UserModel} from "../model/user";
+import {ProjectService} from "../service/projectService";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -82,9 +84,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       useFactory: authHttpUserFactory,
       deps: [Http, RequestOptions]
     },
+    UserModel,
     UserService,
     AuthGuard,
-    AuthenticationService
+    AuthenticationService,
+    ProjectService
     // appRouting
   ],
   bootstrap: [ AppComponent]

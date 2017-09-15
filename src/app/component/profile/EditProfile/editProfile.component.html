@@ -5,7 +5,7 @@
            id="firstname" class="form-control" value=""
            placeholder="{{'newFirstName'|translate}}" #firstname="ngModel" required >
     <br>
-    <input type="text" [(ngModel)]="user.secondname" name="lastname" id="lastname" class="form-control" value=""
+    <input type="text" [(ngModel)]="user.lastname" name="lastname" id="lastname" class="form-control" value=""
            placeholder="{{'newLastName'|translate}}"  #lastname="ngModel" required >
     <br>
     <input type="text" [(ngModel)]="user.email" name="email" id="email" class="form-control" value=""
@@ -28,8 +28,6 @@
            class="form-control" value="" placeholder="{{'confirmPassword'| translate}}"
            (input)="checkConfirmPassword()" required
            pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}$">
-    <!--<div [hidden]="confirmPassword.valid || confirmPassword.untouched" class="alert alert-danger">-->
-    <!--{{'IncorrectConfirmPassword'|translate}}</div>-->
   </div>
   <div class="form-group">
     <div class="row">

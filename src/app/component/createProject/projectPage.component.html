@@ -1,55 +1,58 @@
-<div class="project-page">
-  <div class="panel" id="imagearea" >
-
-    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs" id="photo">
-
-      <div class="panel panel-default">
-        <div class="panel-body" >
-          <div class="media">
-            <div align="center">
-              <img id="id-area-image" class="img-responsive" src={{id_image}}/>
+<form class="register-form" #form="ngForm" (ngSubmit)="sendData(form.value)" role="form">
+  <div class="project-page">
+    <div class="panel" id="imagearea" >
+      <div class="col-lg-3 col-md-3 hidden-sm hidden-xs" id="photo">
+        <div class="panel panel-default">
+          <div class="panel-body" >
+            <div class="media">
+              <div align="center">
+                <img id="id-area-image" class="img-responsive" name="project_image" src={{project.image}}/> </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
+      <div>
+        <app-cloudinary (upImgStep)="updateImg($event)"></app-cloudinary>
+      </div>
+    </div>
     <div>
-      <app-cloudinary (upImgStep)="updateImg($event)"></app-cloudinary>
+      <input type="text" [(ngModel)]="project.name" name="name" class="nameproject" id="name-project" placeholder="{{'NameProject'|translate}}">
     </div>
+    <br>
+    <div>
+      <input type="text" [(ngModel)]="project.purpose" name="purpose" class="nameproject" id="purpose-project" placeholder="{{'Purpose'|translate}}">
+    </div>
+    <div>
+      <textarea class="description" [(ngModel)]="project.content" id="text-area-component" name="descriptionProject" placeholder="{{'DescriptionProject'|translate}}"></textarea>
+    </div>
+    <div>
+      <app-colendar (calendar)="updateCalendar($event)"></app-colendar>
+    </div>
+    <br>
+    <div class="panel-mony panel panel-default" style="width:1400px;">
+      <div class="panel-body">
+        <div class="row">
+          <h2 class="col-lg-6 col-xs-6 col-sm-6" >{{'RequerMoney'|translate}}</h2>
+          <ul class="menu" style="position:relative; top: 20px;">
+            <input type="text" [(ngModel)]="project.money" id="money-field" name="money" class="mony">
+            <li><a>{{'ChooseMoney'|translate}}</a>
+              <ul class="submenu">
+                <li><a href=#>USA</a></li>
+                <li><a href=#>BLR</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-sm-offset-3">
+      <input
+        type="submit" name="project-submit" id="project-submit" tabindex="3"
+        class="btn btn-info btn-block" value="{{'Create'| translate}}">
+    </div>
+  </div>
+</form>
 
-  </div>
 
-<div>
-  <input type="text"  class="nameproject" id="name-project" placeholder="{{'NameProject'|translate}}">
-</div>
-  <br>
-  <div>
-    <textarea class="description" name="descriptionProject" placeholder="{{'DescriptionProject'|translate}}"></textarea>
-  </div>
-  <div>
-    <app-colendar></app-colendar>
-  </div>
-  <br>
-<div class="panel-mony panel panel-default" style="width:1400px;">
-  <div class="panel-body">
-  <div class="row">
-    <h2 class="col-lg-6 col-xs-6 col-sm-6" >{{'RequerMoney'|translate}}</h2>
-    <ul class="menu" style="position:relative; top: 20px;">
-      <input type="text" class="mony">
-      <li><a>{{'ChooseMoney'|translate}}</a>
-        <ul class="submenu">
-          <li><a href=#>USA</a></li>
-          <li><a href=#>BLR</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  </div>
-</div>
-  <div class="container">
-  <div align="center" class="createButton">
-    <input type="button" class="createProject" value="{{'Create'|translate}}">
-  </div>
-  </div>
-</div>
+

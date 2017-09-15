@@ -7,5 +7,7 @@ import { Component} from "@angular/core";
 })
 
 export class logoutComponent {
-  logout() {}
+  logout() {
+    localStorage.clear();
+  }
 }

@@ -1,6 +1,6 @@
 import { Component} from "@angular/core";
 import {UserService} from "../../../service/userService";
-import {User} from "../../../model/user";
+import { UserModel} from "../../../model/user";
 import {error} from "util";
 
 @Component({
@@ -11,7 +11,15 @@ import {error} from "util";
 
 export class InfoProfileComponent {
    private username: string;
-   protected user: User = new User;
+   private userModel:UserModel;
+  private data: any;
+
+  constructor()
+  {
+    this.userModel= JSON.parse(localStorage.getItem("currentUser"));
+    console.log(this.userModel);
+  }
+
   //
   // constructor (private userSerivce: UserService){
   //   this.username = JSON.parse(localStorage.getItem("token")).username;

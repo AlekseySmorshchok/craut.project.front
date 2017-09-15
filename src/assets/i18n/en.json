@@ -40,5 +40,6 @@
   "RequerMoney":"Enter the required amount",
   "ChooseMoney":"Select",
   "Create":"Create",
-  "Drag":"Or drag and drop files below"
+  "Drag":"Or drag and drop files below",
+  "Purpose":"Purpose"
 }

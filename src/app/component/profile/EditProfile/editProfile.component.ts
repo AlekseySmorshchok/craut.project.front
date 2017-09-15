@@ -1,6 +1,6 @@
 import { Component} from "@angular/core";
 import {UserService} from "../../../service/userService";
-import {User} from "../../../model/user";
+import { UserModel} from "../../../model/user";
 import {ImageComponent} from "../../imageArea/image.component";
 
 @Component({
@@ -11,7 +11,7 @@ import {ImageComponent} from "../../imageArea/image.component";
 })
 
 export class EditProfileComponent {
-  protected user: User = new User();
+  protected user: UserModel = new UserModel();
   protected confirmPassword: string;
   constructor (private userService: UserService,
                private imageComponent: ImageComponent) {

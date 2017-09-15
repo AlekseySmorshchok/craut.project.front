@@ -1,6 +1,6 @@
 import {animate, Component, state, style, transition, trigger} from '@angular/core';
 import { Router } from '@angular/router';
-import {User} from '../../../model/user';
+import {UserModel} from '../../../model/user';
 import {UserService} from '../../../service/userService';
 import {AuthenticationService} from '../../../service/AuthentificationService';
 import {Http} from "@angular/http";
@@ -14,8 +14,7 @@ declare let $: any;
 })
 export class LoginPageComponent {
   error: string;
-  protected user: User = new User();
-
+  private user: UserModel = new UserModel();
   constructor(private authenticationService: AuthenticationService,
               private userServise: UserService,
               private router: Router,
@@ -24,38 +23,24 @@ export class LoginPageComponent {
   }
   checkLogin() {}
   checkPassword() {}
-  // login(data: any) {
-  //   console.log(this.user.username + ' ' + this.user.password);
-  //   this.authenticationService.login(this.user.username, this.user.password).subscribe(result => {
-  //     if (result === true) {
-  //       $('#hidden-submit').click();
-  //       console.log('next save');
-  //       this.userService.saveCurrentUser(this.user.username);
-  //       this.router.navigate(['/profile']);
-  //     }}, (err) => {
-  //     if (err === 'Unauthorized') {
-  //       this.error = "INCORRECT_PASS";
-  //     }});
-  //   this.authenticationService.getMe();
-  //     }
   loading = false;
   returnUrl: string;
   errorMessage: string;
   login(data: any) {
     this.loading = true;
     this.errorMessage = null;
-    this.authenticationService.login(this.user.username, this.user.password)
+    this.authenticationService.login(this.user._email, this.user._password)
       .flatMap(data => {
         return this.authenticationService.getMe();
       })
       .subscribe(
         data => {
-          localStorage.setItem('user', JSON.stringify(data));
-          this.router.navigate([this.returnUrl]);
+          localStorage.setItem('currentUser', JSON.stringify(data));
+          this.router.navigate(['/']);
         },
         error => {
           this.loading = false;
-          this.errorMessage = error.json().message;
+          console.log(this.errorMessage = error);
         }
       );
   }

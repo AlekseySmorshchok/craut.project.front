@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output} from "@angular/core";
 import {CloudinaryImageComponent, CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary';
+import {UserModel} from "../../model/user";
 
 @Component({
   selector: 'app-cloudinary',
@@ -29,7 +30,7 @@ export class CloudinaryComponent{
   uploader: CloudinaryUploader = new CloudinaryUploader(
     new CloudinaryOptions({ cloudName: 'crowbanding', uploadPreset: 'f4k1c585' })
   );
-
+  private data:any;
   constructor(){
 
     this.uploader.onAfterAddingFile = (item: any) => {
@@ -39,6 +40,7 @@ export class CloudinaryComponent{
     this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
       this.upImg.emit(JSON.parse(response).public_id);
       this.upImgStep.emit(JSON.parse(response).public_id);
+      localStorage.setItem("image",JSON.parse(response).public_id);
       console.log('it public url: ' + JSON.parse(response).public_id);
       return {item, response, status, headers};
     };
