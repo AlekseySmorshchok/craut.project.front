@@ -88,7 +88,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserService,
     AuthGuard,
     AuthenticationService,
-    ProjectService
+    ProjectService,
+    CalendarComponent
     // appRouting
   ],
   bootstrap: [ AppComponent]

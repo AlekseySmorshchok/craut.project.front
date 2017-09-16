@@ -8,12 +8,13 @@ import {DateModel, DatePickerOptions} from "ng2-datepicker";
 })
 export class CalendarComponent {
 
-  @Output() calendar: EventEmitter<any> = new EventEmitter();
+
   date: DateModel;
   options: DatePickerOptions;
 
   constructor() {
     this.options = new DatePickerOptions();
-    console.log(this.options);
+    console.log(this.date);
   }
+
 }

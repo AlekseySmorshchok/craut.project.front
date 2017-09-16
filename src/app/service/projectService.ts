@@ -13,6 +13,7 @@ export class ProjectService extends CoreService{
    super();
  }
  sendProjectData(data: any){
+   data.dwy=data.dwy.formatted
    console.log(data);
    return this.http.post(`${this.webService}sendData`, data).map((response: Response) => response);
  }
